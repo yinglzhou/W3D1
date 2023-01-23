@@ -11,17 +11,24 @@ class Array
 
     def my_select(&prc)
         finalarr = []
-        self.my_each{ |ele| finalarr << ele if prc.call(ele)}
-     
+        self.my_each do |ele| 
+            finalarr << ele if prc.call(ele)
+        end
+
+
+
         # i = 0
         # while i < self.length
         #     finalarr << self[i] if self.my_each(&prc)
         #     i += 1
-        end
         finalarr
     end
     
-    
+    def my_reject(&prc)
+        finalarr = []
+        self.my_each { |ele| finalarr << ele if !prc.call(ele) }
+        finalarr
+    end
 
 end
 
